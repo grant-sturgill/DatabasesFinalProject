@@ -1,0 +1,42 @@
+BookDB
+
+Tables:
+
+reviews : reviewid, userid, bookid, review_date, review_text, rating
+  PRIMARY KEY (`reviewid`),
+  FOREIGN KEY (`userid`) REFERENCES users(`userid`),
+  FOREIGN KEY (`bookid`) REFERENCES books(`bookid`)
+
+authors : bookid, FirstName,LastName
+  FOREIGN KEY (`bookid`) REFERENCES books(`bookid`)
+
+users : userid, email, firstname, middlename, lastname, password, gender, age, is_manager
+  PRIMARY KEY (`userid`)
+
+keywords : keyid, keyword
+  PRIMARY KEY (`keyid`)
+
+book_keywords : bkid, bookid, keyid
+  PRIMARY KEY (`bkid`),
+  FOREIGN KEY (`bookid`) REFERENCES books(`bookid`),
+  FOREIGN KEY (`keyid`) REFERENCES keywords(`keyid`)
+
+books : bookid, title, ISBN, subject, summary, lang, publisher, date_published, price, stock_quantity
+  PRIMARY KEY (`bookid`)
+
+orders : orderid, bookid, userid, date, quantity, cost, order_status, card_number, billingid, shippingid
+  PRIMARY KEY (`orderid`),
+  FOREIGN KEY (`bookid`) REFERENCES books(`bookid`),
+  FOREIGN KEY (`userid`) REFERENCES users(`userid`),
+  FOREIGN KEY (`billingid`) REFERENCES billing_address(`billingid`),
+  FOREIGN KEY (`shippingid`) REFERENCES shipping_address(`shippingid`),
+  FOREIGN KEY (`order_status`) REFERENCES order_status(`statusid`)
+
+order_status : statusid, status
+  PRIMARY KEY (`statusid`)
+
+billing_address : billingid, street, city, state, zip, country
+  PRIMARY KEY (`billingid`)
+
+shipping_address : shippingid, street, city, state, zip, country
+  PRIMARY KEY (`shippingid`)
