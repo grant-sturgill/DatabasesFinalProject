@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>BookDB Schema</title>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+caption {
+  font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+<h1>BookDB Schema</h1>
+
+<table>
+  <caption>reviews</caption>
+  <tr>
+    <td>reviewid</td>
+    <td>userid</td>
+    <td>bookid</td>
+    <td>review_date</td>
+    <td>review_text</td>
+    <td>rating</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`reviewid`),<br>
+FOREIGN KEY (`userid`) REFERENCES users(`userid`),<br>
+FOREIGN KEY (`bookid`) REFERENCES books(`bookid`)
+</p>
+
+<table>
+  <caption>authors</caption>
+  <tr>
+    <td>bookid</td>
+    <td>FirstName</td>
+    <td>LastName</td>
+  </tr>
+</table>
+<p>
+FOREIGN KEY (`bookid`) REFERENCES books(`bookid`)
+</p>
+
+<table>
+  <caption>users</caption>
+  <tr>
+    <td>userid</td>
+    <td>email</td>
+    <td>firstname</td>
+    <td>middlename</td>
+    <td>lastname</td>
+    <td>password</td>
+    <td>gender</td>
+    <td>age</td>
+    <td>is_manager</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`userid`)
+</p>
+
+<table>
+  <caption>keywords</caption>
+  <tr>
+    <td>keyid</td>
+    <td>keyword</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`keyid`)
+</p>
+
+<table>
+  <caption>book_keywords</caption>
+  <tr>
+    <td>bkid</td>
+    <td>bookid</td>
+    <td>keyid</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`bkid`),<br>
+FOREIGN KEY (`bookid`) REFERENCES books(`bookid`),<br>
+FOREIGN KEY (`keyid`) REFERENCES keywords(`keyid`)
+</p>
+
+<table>
+  <caption>books</caption>
+  <tr>
+    <td>bookid</td>
+    <td>title</td>
+    <td>ISBN</td>
+    <td>subject</td>
+    <td>summary</td>
+    <td>lang</td>
+    <td>publisher</td>
+    <td>date_published</td>
+    <td>price</td>
+    <td>stock_quantity</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`bookid`)
+</p>
+
+<table>
+  <caption>orders</caption>
+  <tr>
+    <td>orderid</td>
+    <td>bookid</td>
+    <td>userid</td>
+    <td>date</td>
+    <td>quantity</td>
+    <td>cost</td>
+    <td>order_status</td>
+    <td>card_number</td>
+    <td>billingid</td>
+    <td>shippingid</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`orderid`),<br>
+FOREIGN KEY (`bookid`) REFERENCES books(`bookid`),<br>
+FOREIGN KEY (`userid`) REFERENCES users(`userid`),<br>
+FOREIGN KEY (`billingid`) REFERENCES billing_address(`billingid`),<br>
+FOREIGN KEY (`shippingid`) REFERENCES shipping_address(`shippingid`),<br>
+FOREIGN KEY (`order_status`) REFERENCES order_status(`statusid`)
+</p>
+
+<table>
+  <caption>order_status</caption>
+  <tr>
+    <td>statusid</td>
+    <td>status</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`statusid`)
+</p>
+
+<table>
+  <caption>billing_address</caption>
+  <tr>
+    <td>billingid</td>
+    <td>street</td>
+    <td>city</td>
+    <td>state</td>
+    <td>zip</td>
+    <td>country</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`billingid`)
+</p>
+
+<table>
+  <caption>shipping_address</caption>
+  <tr>
+    <td>shippingid</td>
+    <td>street</td>
+    <td>city</td>
+    <td>state</td>
+    <td>zip</td>
+    <td>country</td>
+  </tr>
+</table>
+<p>
+PRIMARY KEY (`shippingid`)
+</p>
+
+</body>
+
+</html>
