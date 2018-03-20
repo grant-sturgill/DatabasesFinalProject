@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+<form action="/newBook.php" method="post">
+  <fieldset>
+    <legend>Add New Book</legend>
+    Title:<br>
+    <input type="text" name="title"><br>
+    ISBN:<br>
+    <input type="text" name="ISBN"><br>
+    Author(s):<br>
+    <input type="text" name="author"><br>
+    Subject:<br>
+    <input type="text" name="subject"><br>
+    Summary/Description:<br>
+    <input type="text" name="summary"><br>
+    Language:<br>
+    <input type="text" name="language"><br>
+    Publisher:<br>
+    <input type="text" name="publisher"><br>
+    Keywords (separate by comma):<br>
+    <input type="text" name="keyword"><br>
+    Date Published:<br>
+    <input type="date" name="datePub"><br>
+    Price:<br>
+    <input type="number" name="price"><br>
+    Quantity in Stock:<br>
+    <input type="number" name="quantity"><br><br>
+    <input type="submit" value="Add New Book">
+    <input type="reset">
+  </fieldset>
+</form>
+
+<br>
+
+<form action="/search.php" method="post">
+  <fieldset>
+    <legend>Book Search</legend>
+    Title:<br>
+    <input type="search" name="title"><br>
+    Author:<br>
+    <input type="search" name="author"><br>
+    Subject:<br>
+    <input type="search" name="subject"><br>
+    Keyword:<br>
+    <input type="search" name="keyword"><br>
+    Date Published:<br>
+    <input type="date" name="datePub"><br><br>
+    Price Range:<br>
+    Min: <input type="range" name="priceMin" min="1" max="1000"><br>
+    Max: <input type="range" name="priceMax" min="1" max="1000"><br><br>
+    <input type="submit" value="Search">
+    <input type="reset">
+  </fieldset>
+</form>
+
+<br>
+
+<form action="/userNew.php" method="post">
+  <fieldset>
+    <legend>New User</legend>
+    First Name:<br>
+    <input type="text" name="firstName"><br>
+    Middle Name:<br>
+    <input type="text" name="middleName"><br>
+    Last Name:<br>
+    <input type="text" name="lastName"><br>
+    Age:<br>
+    <input type="number" name="age"><br><br>
+    Gender:<br>
+    <input type="radio" name="gender" value="male" checked> Male<br>
+    <input type="radio" name="gender" value="female"> Female<br>
+    <input type="radio" name="gender" value="other"> Other<br><br>
+    User Type:<br>
+    <input type="radio" name="userType" value="customer" checked> Customer<br>
+    <input type="radio" name="userType" value="manager"> Manager<br><br>
+    Email:<br>
+    <input type="email" name="email"><br>
+    Username:<br>
+    <input type="text" name="username"><br>
+    Password:<br>
+    <input type="password" name="password"><br>
+    Confirm Password:<br>
+    <input type="password" name="confirmPass"><br><br>
+    <input type="submit" value="Create New User">
+    <input type="reset">
+  </fieldset>
+</form>
+
+<br>
+
+<form>
+  <fieldset>
+    <legend>Order Form</legend>
+    Book Ordered:*derived<br>
+    Buyer:*derived<br>
+    Date of order:*derived<br>
+    Quantity:<br>
+    Cost:*derived<br>
+    Order Status:<br>
+    Card Number:<br>
+    Billing Address:<br>
+
+    Shipping Address (if different from Billing):<br><br>
+    <input type="submit" value="Submit Order">
+    <input type="reset">
+  </fieldset>
+</form>
+
+</body>
+</html>
